@@ -1,0 +1,68 @@
+p{
+    color: whitesmoke;
+    font-family: Arial;
+}
+
+.upper{
+    height: 15vh;
+    width: 100vw;
+    position: fixed;
+    left: 0; top: 0;
+    background-color: green;
+}
+
+.middle{
+    position: fixed;
+    left: 0; top: 15vh;
+    bottom: 75vh;
+}
+
+.middle P{
+    color: black;
+}
+
+.bottom{
+    height: 15vh;
+    width: 100vw;
+    position: fixed;
+    left: 0; bottom: 0;
+    background-color: green;
+    display: grid;
+}
+
+.title{
+    font-size: 3vh;
+}
+
+#bottomLeft{
+    grid-row-start: 1;
+    grid-column-start: 1;
+}
+
+#bottomRight{
+    grid-row-start: 1;
+    grid-column-start: 6;
+    display: grid;
+}
+
+#A1{
+    grid-row-start: 1;
+    grid-column-start: 1;
+}
+
+#A2{
+    grid-row-start: 1;
+    grid-column-start: 2;
+}
+
+#A3{
+    grid-row-start: 2;
+    grid-column-start: 1;
+    /* color:blueviolet; */
+}
+
+#A4{
+    grid-row-start: 2;
+    grid-column-start: 2;
+    /* color:    aqua; */
+}
