@@ -1,4 +1,4 @@
-Adendo, dá um `npm install` antes de rodar
+Adendo, dá um `npm install` antes de rodar    
 pra rodar dá um `npm run dev`
 
 # React + TypeScript + Vite
