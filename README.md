@@ -1,6 +1,12 @@
 Adendo, dá um `npm install` antes de rodar    
 pra rodar dá um `npm run dev`
 
+# UFAB3
+
+Projeto de ferramenta para investimentos para o nosso projeto de Laboratório de Engenharia de Software no 2025.1
+
+Todo o código presente está sujeito a licença MIT.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
