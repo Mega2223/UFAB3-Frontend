@@ -5,26 +5,12 @@
   text-align: center;
 }
 
-#header{
-  /*Eu não sei se isso está de acordo com as melhores práticas de header na programação web*/
-  /*display: flex;*/
-  
-  font-family: "Noto Serif Khojki", serif;
-  height: 15vh;
-  color: white;
-  background: linear-gradient(0deg, darkgreen, green); /* Olha as cores no protótipo dps*/
-  font-size: 3em;
-  position: absolute;
-  top: 0; left: 0; width: 100%;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
-
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
