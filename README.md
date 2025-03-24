@@ -7,6 +7,8 @@ Projeto de ferramenta para investimentos para o nosso projeto de Laboratório de
 
 Todo o código presente está sujeito a licença MIT.
 
+[Backend](https://github.com/rodrigo98rm/ufab3-backend)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
