@@ -10,7 +10,7 @@ function App() {
         <>
             <div id = "header">
                 <img src={"./public/img.png"} alt={"Logo"}/>
-                <div>
+                <div id = "title-container">
                     <p className="title">UFAB3</p>
                 </div>
             </div>

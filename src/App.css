@@ -25,10 +25,16 @@
   top: 3vh; left: 3vh; height: 13vh; width: 13vh;
 }
 
+#title-container{
+  position: absolute;
+  left: 17vh;
+  text-align: center;
+}
+
 .title{
   text-align: left;
-  position: absolute;
-  top: 0; left: 17vh;
+  /*position: absolute;*/
+  /*top: 0; left: 17vh;*/
   line-height: 0;
 }
 
