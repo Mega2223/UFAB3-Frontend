@@ -9,13 +9,22 @@
   /*Eu não sei se isso está de acordo com as melhores práticas de header na programação web*/
   /*display: flex;*/
   
-  font-family: "Noto Serif Khojki", serif;
+  font-family: "Calibri", serif;
   height: 15vh;
   color: white;
   background: linear-gradient(0deg, darkgreen, green); /* Olha as cores no protótipo dps*/
   font-size: 3em;
   position: absolute;
-  top: 0; left: 0; width: 100%;
+  padding: 0;
+  margin: 0;
+  top: 0; left: 0; width: 100vw;
+}
+
+.title{
+  text-align: left;
+  position: absolute;
+  top: 0; left: 0;
+  line-height: 0;
 }
 
 .logo {

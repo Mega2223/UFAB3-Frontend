@@ -9,7 +9,9 @@ function App() {
     return (
         <>
             <div id = "header">
-                <p className = "title">UFAB3</p>
+                <div>
+                    <p className="title">UFAB3</p>
+                </div>
             </div>
             <div>
                 <a href="https://vite.dev" target="_blank">
@@ -29,7 +31,12 @@ function App() {
                 </p>
             </div>
             <p className="read-the-docs">
-                Teste
+                E sorte é coisa além de cavalos e de sombras, coisas.
+                Além de ficar ou de ir embora, a pele.
+                Também vai embora quando morre o corpo.
+                Morre a pele.
+                Sobra vida.
+                Somente pra quem curte o desvio.
             </p>
         </>
     )
