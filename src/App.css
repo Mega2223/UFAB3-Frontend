@@ -10,7 +10,7 @@
   /*display: flex;*/
   
   font-family: "Calibri", serif;
-  height: 15vh;
+  height: 19vh;
   color: white;
   background: linear-gradient(0deg, darkgreen, green); /* Olha as cores no protótipo dps*/
   font-size: 3em;
@@ -20,10 +20,15 @@
   top: 0; left: 0; width: 100vw;
 }
 
+#header img{
+  position: absolute;
+  top: 3vh; left: 3vh; height: 13vh; width: 13vh;
+}
+
 .title{
   text-align: left;
   position: absolute;
-  top: 0; left: 0;
+  top: 0; left: 17vh;
   line-height: 0;
 }
 
