@@ -13,6 +13,7 @@ export default function Login(){
                     <p>Senha</p>
                     <input/>
                 </div>
+                <p><b> </b></p>
                 <div>
                     <button>Login</button>
                 </div>
