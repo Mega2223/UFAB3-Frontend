@@ -1,12 +1,29 @@
 import './App.css'
+import Login from "./paginas/Login.tsx";
 
-export function Header(){
+const user = {
+    // name: "Júlio"
+    name:null
+}
+
+let state = "main";
+
+export function LoginButton(){
+    if(user.name == null){
+        return (<button id="login">Login</button>)
+    } else {
+        return (<button id="user">{user.name}</button>)
+    }
+}
+
+export function Header() {
+    const login = LoginButton()
     return (
         <div id="header">
             <img src={"./UFAB3.png"} alt={"Logo"}/>
             <div id="buttons">
                 <button id="home">Home</button>
-                <button id="login">Login</button>
+                {login}
             </div>
         </div>
     )
@@ -26,16 +43,13 @@ export function Bottom(){
     )
 }
 
-function App() {
-    return (
-        <>
-            <div id="header">
-                <img src={"./UFAB3.png"} alt={"Logo"}/>
-                <div id="buttons">
-                    <button id="home">Home</button>
-                    <button id="login">Login</button>
-                </div>
-            </div>
+export function Body(){
+    state = 'login'
+    if (state == "login"){
+        return Login()
+    }
+    else {
+        return (
             <div id="center">
                 <p>
                     Isso é um placeholder para a tela inicial do UFAB3
@@ -44,15 +58,19 @@ function App() {
                     Tenha um bom dia :)
                 </p>
             </div>
-            <div id = "bottom">
-                <img src = {"./UFABC_LAZY.png"} id = "socials"/>
-                <div id="buttons">
-                    <button id = "quem">Quem somos</button>
-                    <button id = "faq">FAQ</button>
-                    <button id = "email">Email</button>
-                    <button id = "fale">Fale Conosco</button>
-                </div>
-            </div>
+        )
+    }
+}
+
+function App() {
+    const header = Header()
+    const center = Body()
+    const bottom = Bottom()
+    return (
+        <>
+            {header}
+            {center}
+            {bottom}
         </>
     )
 }

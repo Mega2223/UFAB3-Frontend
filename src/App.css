@@ -49,7 +49,7 @@ html, body {
   font-family: "Inter", "Inter Semi Bold", "Comic Sans MS", serif;
 }
 
-#header #buttons #login{
+#header #buttons #login, #header #buttons #user {
   background-color: #1a1a1a;
   grid-column: 2;
 }

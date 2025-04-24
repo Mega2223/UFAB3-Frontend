@@ -1,0 +1,23 @@
+@font-face {
+    font-family: Inter;
+    src: url("/public/fonts/Inter.ttf");
+}
+
+#center{
+    display: flex;
+    justify-content: center;
+}
+
+p{
+    font-family: "Inter", "Inter Semi Bold", "Comic Sans MS", serif;
+    /*text-align: center;*/
+}
+
+#title{
+    font-size: 5vh;
+    font-weight: bold;
+}
+
+button{
+
+}
