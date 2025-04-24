@@ -1,37 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-    const [count, setCount] = useState(0)
 
     return (
         <>
             <div id = "header">
                 <img src={"./UFAB3.png"} alt={"Logo"}/>
-                {/*<div id = "title-container">*/}
-                {/*    <p className="title">UFAB3</p>*/}
-                {/*</div>*/}
+                <div id="buttons">
+                    <button id = "home">Home</button>
+                    <button id = "login">Login</button>
+                </div>
             </div>
             <div id = "center">
-                <div>
-                    <a href="https://vite.dev" target="_blank">
-                        <img src={viteLogo} className="logo" alt="Vite logo" />
-                    </a>
-                    <a href="https://react.dev" target="_blank">
-                        <img src={reactLogo} className="logo react" alt="React logo" />
-                    </a>
-                </div>
-                <h1>Vite + React</h1>
-                <div className="card">
-                    <button onClick={() => setCount((count) => count + 1)}>
-                        count is {count}
-                    </button>
-                    <p>
-                        Edit <code>src/App.tsx</code> and save to test HMR
-                    </p>
-                </div>
                 <p className="read-the-docs">
                     E sorte é coisa além de cavalos e de sombras, coisas.
                     Além de ficar ou de ir embora, a pele.
@@ -41,8 +21,14 @@ function App() {
                     Somente pra quem curte o desvio.
                 </p>
             </div>
-            <div id = "last">
-
+            <div id = "bottom">
+                <img src = {"./UFABC_LAZY.png"} id = "socials"/>
+                <div id="buttons">
+                    <button id = "quem">Quem somos</button>
+                    <button id = "faq">FAQ</button>
+                    <button id = "email">Email</button>
+                    <button id = "fale">Fale Conosco</button>
+                </div>
             </div>
         </>
     )
