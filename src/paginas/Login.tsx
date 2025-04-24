@@ -3,7 +3,7 @@ import("./Login.css")
 export default function Login(){
     return(
         <div id="center">
-            <div>
+            <div id = "sub">
                 <p id="title">Login</p>
                 <div>
                     <p>Email</p>

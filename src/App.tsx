@@ -1,5 +1,6 @@
 import './App.css'
 import Login from "./paginas/Login.tsx";
+import Cadastro from "./paginas/Cadastro.tsx";
 
 const user = {
     // name: "Júlio"
@@ -44,9 +45,12 @@ export function Bottom(){
 }
 
 export function Body(){
-    state = 'login'
+    state = 'cadastro'
     if (state == "login"){
         return Login()
+    }
+    else if (state == 'cadastro'){
+        return Cadastro()
     }
     else {
         return (
