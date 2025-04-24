@@ -10,19 +10,33 @@
   /*display: flex;*/
   
   font-family: "Calibri", serif;
-  height: 19vh;
+  height: 23vh;
   color: white;
-  background: linear-gradient(0deg, darkgreen, green); /* Olha as cores no protótipo dps*/
+  background: linear-gradient(0deg, #0A5517, #006D35); /* Olha as cores no protótipo dps*/
   font-size: 3em;
   position: absolute;
   padding: 0;
   margin: 0;
-  top: 0; left: 0; width: 100vw;
+  top: 0; left:0; width: 98.7vw;
 }
 
 #header img{
   position: absolute;
-  top: 3vh; left: 3vh; height: 13vh; width: 13vh;
+  top: 3vh; left: 3vh; height: 18vh; width: 18vh;
+}
+
+#center{
+  position: absolute;
+  top: 23vh; left: 0;
+  height: 100vh;
+}
+
+#last{
+  background:  linear-gradient(0deg, #0A5517, #006D35);
+  height: 25vh;
+  width: 98.7vw;
+  position: absolute;
+  left: 0vw; top: 97vh
 }
 
 #title-container{
