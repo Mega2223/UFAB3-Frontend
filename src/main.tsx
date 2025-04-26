@@ -10,6 +10,7 @@ import IrSummary from './paginas/IrSummary';
 import Home from './paginas/Home';
 import Login from './paginas/Login';
 import Cadastro from './paginas/Cadastro';
+import UploadXlsx from './paginas/uploadXlsx';
 
 const ProtectedRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
   const userToken = useAtomValue(userTokenAtom);
@@ -31,6 +32,7 @@ createRoot(document.getElementById('root')!).render(
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/ir" element={<IrSummary />} />
+                <Route path='/uploadXlsx' element={<UploadXlsx />} />
               </Routes>
             </ProtectedRoute>
           }

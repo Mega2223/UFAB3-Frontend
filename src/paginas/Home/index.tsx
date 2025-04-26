@@ -30,6 +30,11 @@ const Home: React.FC = () => {
             Ir para Resumo de IR
           </Typography>
         </Link>
+        <Link to="/uploadXlsx">
+           <Typography variant='h6' align='center'>
+            Realizar o upload da carteira
+           </Typography>
+        </Link>
       </Box>
     </Box>
   );
