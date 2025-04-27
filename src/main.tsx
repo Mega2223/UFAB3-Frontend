@@ -2,14 +2,15 @@ import { ReactNode, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 import './index.css';
-import App from './App';
+import './App.tsx'
+import './App.css';
 
 import { userTokenAtom } from './atoms';
 import { useAtomValue } from 'jotai';
 import IrSummary from './paginas/IrSummary';
 import Home from './paginas/Home';
-import Login from './paginas/Login';
-import Cadastro from './paginas/Cadastro';
+import Login from './paginas/Login/Login.tsx';
+import Cadastro from './paginas/Cadastro/Cadastro.tsx';
 import UploadXlsx from './paginas/uploadXlsx';
 
 const ProtectedRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
