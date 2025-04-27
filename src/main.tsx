@@ -11,6 +11,7 @@ import IrSummary from './paginas/IrSummary';
 import Home from './paginas/Home';
 import Login from './paginas/Login/Login.tsx';
 import Cadastro from './paginas/Cadastro/Cadastro.tsx';
+import Dashboard from './paginas/Dashboard/index.tsx'
 import UploadXlsx from './paginas/uploadXlsx';
 
 const ProtectedRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -26,6 +27,7 @@ createRoot(document.getElementById('root')!).render(
         {/* TODO: Add landing page */}
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<Cadastro />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route
           path="/*"
           element={
@@ -38,6 +40,7 @@ createRoot(document.getElementById('root')!).render(
             </ProtectedRoute>
           }
         />
+
       </Routes>
     </BrowserRouter>
   </StrictMode>
