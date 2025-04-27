@@ -1,13 +1,12 @@
 import './App.css'
-import Login from "./paginas/Login/Login.tsx";
-import Cadastro from "./paginas/Cadastro/Cadastro.tsx";
 
 const user = {
+    // TODO o user state foi migrado eu acredito
     // name: "Júlio"
     name:null
 }
 
-let state = "main";
+// let state = "main";
 
 export function LoginButton(){
     if(user.name == null){
@@ -44,39 +43,30 @@ export function Bottom(){
     )
 }
 
-export function Body(){
-    state = 'Cadastro'
-    if (state == "login"){
-        return Login()
-    }
-    else if (state == 'Cadastro'){
-        return Cadastro()
-    }
-    else {
-        return (
-            <div id="center">
-                <p>
-                    Isso é um placeholder para a tela inicial do UFAB3
-                </p>
-                <p>
-                    Tenha um bom dia :)
-                </p>
-            </div>
-        )
-    }
-}
+// export function Body(){
+//     return (
+//         <div id="center">
+//             <p>
+//                 Isso é um placeholder para a tela inicial do UFAB3
+//             </p>
+//             <p>
+//                 Tenha um bom dia :)
+//             </p>
+//         </div>
+//     )
+// }
 
-function App() {
-    const header = Header()
-    const center = Body()
-    const bottom = Bottom()
-    return (
-        <>
-            {header}
-            {center}
-            {bottom}
-        </>
-    )
-}
+// function App() {
+//     const header = Header()
+//     const center = Body()
+//     const bottom = Bottom()
+//     return (
+//         <>
+//             {header}
+//             {center}
+//             {bottom}
+//         </>
+//     )
+// }
 
-export default App
+// export default App

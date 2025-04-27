@@ -1,3 +1,6 @@
+import {Header} from "../../App.tsx";
+import {Bottom} from "../../App.tsx";
+
 import('./Login.css');
 
 import { useNavigate } from 'react-router';
@@ -15,6 +18,8 @@ export default function Login() {
   };
 
   return (
+      <>
+        {Header()}
     <div id="center" className="tela-login">
       <div id="sub">
         <p id="title">Login</p>
@@ -35,5 +40,7 @@ export default function Login() {
         </div>
       </div>
     </div>
+        {Bottom()}
+      </>
   );
 }

@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 import './index.css';
 
-// import './paginas/Cadastro/Cadastro.css'
-import App from './App';
+import './App.tsx'
+import './App.css';
 
 import { userTokenAtom } from './atoms';
 import { useAtomValue } from 'jotai';
