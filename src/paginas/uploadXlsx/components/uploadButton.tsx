@@ -1,5 +1,6 @@
-import { Button } from "@mui/material";
+import { Button, Typography, Box } from "@mui/material";
 import { ChangeEvent, useRef } from "react";
+import AssignmentAddIcon from '@mui/icons-material/AssignmentAdd';
 import axios from "axios";
 
 export default function UploadButton() {
@@ -37,9 +38,16 @@ export default function UploadButton() {
           style={{ display: "none" }}
           onChange={handleFileChange}
         />
-        <Button variant="contained" onClick={handleButtonClick}>
-          Upload de Arquivo
-        </Button>
+        <Box marginTop='10px' display='flex' alignItems='center' gap={2}>
+            <Typography variant="h6" sx={{color: 'black'}}>Anexe aqui suas transações</Typography>
+            <Button onClick={handleButtonClick}>
+              <AssignmentAddIcon/>
+            </Button>
+
+
+        </Box>
+           
+        
       </>
     );
   }
