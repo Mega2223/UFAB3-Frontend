@@ -17,7 +17,7 @@ import IrAsset from './paginas/IrAsset/index.tsx';
 const ProtectedRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
   const userToken = useAtomValue(userTokenAtom);
   const isLoggedIn = !!userToken;
-  return isLoggedIn ? children : <Navigate to="/login" />;
+  return isLoggedIn ? children : <Navigate to="/Home" />;
 };
 
 createRoot(document.getElementById('root')!).render(
@@ -25,6 +25,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         {/* TODO: Add landing page */}
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<Cadastro />} />
         <Route
@@ -32,7 +33,6 @@ createRoot(document.getElementById('root')!).render(
           element={
             <ProtectedRoute>
               <Routes>
-                <Route path="/" element={<Home />} />
                 <Route path="/ir" element={<IrSummary />} />
                 <Route path="/ir/:ticker" element={<IrAsset />} />
                 <Route path="/uploadXlsx" element={<UploadXlsx />} />
