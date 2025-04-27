@@ -2,7 +2,6 @@ import { ReactNode, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 import './index.css';
-
 import './App.tsx'
 import './App.css';
 
