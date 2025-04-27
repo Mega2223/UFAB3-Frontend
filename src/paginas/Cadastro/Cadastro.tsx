@@ -1,7 +1,10 @@
+import {Bottom, Header} from "../../App.tsx";
+
 import("./Cadastro.css")
 
 export default function Cadastro(){
-    return(
+    return (<>
+        {Header()}
         <div id="center" className="tela-cadastro">
             <div>
                 <p id="title">Cadastro</p>
@@ -28,5 +31,6 @@ export default function Cadastro(){
                 </div>
             </div>
         </div>
-    )
+        {Bottom()}
+    </>)
 }
