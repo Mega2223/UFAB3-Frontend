@@ -9,8 +9,6 @@ const UploadXlsx: React.FC = () => {
                 Realize o import da sua carteira
             </Typography>
             <UploadButton/>
-
-
         </Box>
             
 }
