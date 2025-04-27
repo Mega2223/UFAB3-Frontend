@@ -2,7 +2,7 @@ import("./Cadastro.css")
 
 export default function Cadastro(){
     return(
-        <div id="center">
+        <div id="center" className="tela-cadastro">
             <div>
                 <p id="title">Cadastro</p>
                 <div>

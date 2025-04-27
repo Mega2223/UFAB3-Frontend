@@ -1,7 +1,7 @@
 import('./Login.css');
 
 import { useNavigate } from 'react-router';
-import { userTokenAtom } from '../atoms';
+import { userTokenAtom } from '../../atoms.ts';
 import { useSetAtom } from 'jotai';
 
 export default function Login() {
@@ -15,7 +15,7 @@ export default function Login() {
   };
 
   return (
-    <div id="center">
+    <div id="center" className="tela-login">
       <div id="sub">
         <p id="title">Login</p>
         <div>
@@ -24,6 +24,7 @@ export default function Login() {
         </div>
         <div>
           <p>Senha</p>
+          {/*TODO: Ocultar a senha*/}
           <input />
         </div>
         <p>

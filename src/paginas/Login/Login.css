@@ -1,0 +1,19 @@
+@font-face {
+    font-family: Inter;
+    src: url("/public/fonts/Inter.ttf");
+}
+
+.tela-login{
+    display: flex;
+    justify-content: center;
+
+    #title{
+        font-size: 5vh;
+        font-weight: bold;
+    }
+
+    p{
+        font-family: "Inter", "Inter Semi Bold", "Comic Sans MS", serif;
+        /*text-align: center;*/
+    }
+}
