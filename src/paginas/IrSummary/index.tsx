@@ -81,6 +81,9 @@ const IrSummary: React.FC = () => {
           flexDirection: 'row',
           justifyContent: 'space-between',
         }}
+        onClick={() => {
+          navigate(`/ir/${asset.ticker}`);
+        }}
       >
         <Typography variant="body1" align="left" fontWeight={400}>
           {asset.ticker} - {asset.name}
