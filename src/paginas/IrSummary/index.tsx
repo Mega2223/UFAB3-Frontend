@@ -1,10 +1,10 @@
 import { Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { FaChevronRight } from 'react-icons/fa';
-import { Header , Bottom} from '../../App';
+import { Header, Bottom } from '../../App';
 import { useEffect, useState } from 'react';
 import { api } from '../../api';
-import './Summary.css'
+import './Summary.css';
 
 type Asset = {
   ticker: string;
@@ -49,27 +49,26 @@ const IrSummary: React.FC = () => {
     const backgroundColor = rowIndex % 2 === 0 ? '#ffffff' : '#dedede';
 
     return (
-        <>
-      <Box
-        sx={{
-          backgroundColor,
-          padding: '8px',
-          ':hover': { cursor: 'pointer' },
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}
-        onClick={() => {
-          navigate(`/ir/${asset.ticker}`);
-        }}
-      >
-        <Typography variant="body1" align="left" fontWeight={400}>
-          {asset.ticker} - {asset.name}
-        </Typography>
-        <FaChevronRight />
-      </Box>
-
-        </>
+      <>
+        <Box
+          sx={{
+            backgroundColor,
+            padding: '8px',
+            ':hover': { cursor: 'pointer' },
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+          onClick={() => {
+            navigate(`/ir/${asset.ticker}`);
+          }}
+        >
+          <Typography variant="body1" align="left" fontWeight={400}>
+            {asset.ticker} - {asset.name}
+          </Typography>
+          <FaChevronRight />
+        </Box>
+      </>
     );
   };
 
@@ -93,34 +92,42 @@ const IrSummary: React.FC = () => {
   };
 
   return (
-      <>
-          {Header()}
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0 }} className="ir-summary" >
+    <>
+      {Header()}
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
-          padding: '32px',
-          maxWidth: '1296px',
-          margin: '0 auto'
+          gap: 0,
+          margin: '192px 0 0 0',
         }}
+        className="ir-summary"
       >
-        <Typography variant="h4" align="center">
-          IRPF - Bens e Direitos & Rendimentos
-        </Typography>
-        <Typography variant="body1">
-          A lista abaixo inclui ativos que devem ser declarados na seção de Bens
-          e Direitos. Clique no ativo para ver todas as informações para as
-          seções de Bens e Direitos, Rendimentos Isentos e Não Tributáveis, e
-          Rendimentos Sujeitos à Tributação Exclusiva/Definitiva.
-        </Typography>
-        <AssetTable assets={stocks} title="Ações" />
-        <AssetTable assets={fiis} title="Fundos Imobiliários" />
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            padding: '32px',
+            maxWidth: '1296px',
+            margin: '0 auto',
+          }}
+        >
+          <Typography variant="h4" align="center">
+            IRPF - Bens e Direitos & Rendimentos
+          </Typography>
+          <Typography variant="body1">
+            A lista abaixo inclui ativos que devem ser declarados na seção de
+            Bens e Direitos. Clique no ativo para ver todas as informações para
+            as seções de Bens e Direitos, Rendimentos Isentos e Não Tributáveis,
+            e Rendimentos Sujeitos à Tributação Exclusiva/Definitiva.
+          </Typography>
+          <AssetTable assets={stocks} title="Ações" />
+          <AssetTable assets={fiis} title="Fundos Imobiliários" />
+        </Box>
       </Box>
-    </Box>
-          {Bottom()}
-      </>
+      {Bottom()}
+    </>
   );
 };
 
