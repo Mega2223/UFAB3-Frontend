@@ -2,6 +2,8 @@ import { Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { FaChevronRight } from 'react-icons/fa';
 import { Header , Bottom} from '../../App';
+import { useEffect, useState } from 'react';
+import { api } from '../../api';
 import './Summary.css'
 
 type Asset = {
@@ -9,51 +11,25 @@ type Asset = {
   name: string;
 };
 
-const stocks: Asset[] = [
-  {
-    ticker: 'PETR4',
-    name: 'Petrobras',
-  },
-  {
-    ticker: 'VALE3',
-    name: 'Vale S.A.',
-  },
-  {
-    ticker: 'ITUB4',
-    name: 'Itaú Unibanco',
-  },
-  {
-    ticker: 'B3SA3',
-    name: 'B3 S.A.',
-  },
-  {
-    ticker: 'ABEV3',
-    name: 'Ambev S.A.',
-  },
-];
-
-// FIIs
-const fiis: Asset[] = [
-  {
-    ticker: 'HGLG11',
-    name: 'Ceará Logística',
-  },
-  {
-    ticker: 'KNRI11',
-    name: 'Kinea Renda Imobiliária',
-  },
-  {
-    ticker: 'MXRF11',
-    name: 'Maxi Renda',
-  },
-  {
-    ticker: 'VISC11',
-    name: 'Vinci Shopping Centers',
-  },
-];
-
 const IrSummary: React.FC = () => {
   const navigate = useNavigate();
+
+  const [fiis, setFiis] = useState<Asset[]>([]);
+  const [stocks, setStocks] = useState<Asset[]>([]);
+
+  useEffect(() => {
+    const exec = async () => {
+      const response = await api.get<{
+        assets: { fiis: Asset[]; stocks: Asset[] };
+      }>('/ir');
+
+      const { fiis, stocks } = response.data.assets;
+      setFiis(fiis);
+      setStocks(stocks);
+    };
+
+    exec();
+  }, []);
 
   const TableHeader = ({ title }: { title: string }) => (
     <Box sx={{ backgroundColor: '#006D35', padding: '8px' }}>
