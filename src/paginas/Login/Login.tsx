@@ -15,14 +15,14 @@ export default function Login() {
   const setUserToken = useSetAtom(userTokenAtom);
 
   const handleLogin = async () => {
-    axios.post("http://localhost:9001/auth/login",{
-      email: values.email,
-      passwordHash: values.password
-    })
-    .then((res) => localStorage.setItem("token",res.data.token))
-    .catch((err) => console.error(err));
-    setUserToken('token'); // TODO: Handle auth
-    navigate('/');
+    //const response = await axios.post("http://localhost:9001/auth/login",{
+     // email: values.email,
+     // passwordHash: values.password
+    //})
+    //.then((res) => localStorage.setItem("token",res.data.token))
+    //.catch((err) => console.error(response));
+    //setUserToken('token'); // TODO: Handle auth
+    navigate('/uploadXlsx');
   };
 
   

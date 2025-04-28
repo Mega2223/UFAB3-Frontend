@@ -3,7 +3,7 @@ import "../../App.css"
 import React from "react";
 import {Box, Paper, Typography} from "@mui/material";
 import { DataGrid , GridColDef} from '@mui/x-data-grid';
-
+import { useNavigate } from "react-router";
 import GraphicPizzaExemple from '../Home/components/graphics/GraphicPizzaExemple';
 import PortfolioTable from '../Home/components/graphics/PortifolioTable';
 
@@ -79,8 +79,11 @@ export function GenTable(){
 }
 
 const Dashboard: React.FC = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
+    const handleClickIr = () => {
+        navigate('/ir')
+    }
     return (
         <>  {Header()}
             <div className="tela-dashboard">
@@ -125,12 +128,17 @@ const Dashboard: React.FC = () => {
                         <h2 className="title">POSIÇÃO DETALHADA</h2>
                         <div className="part">
                             {GenTable()}
+                            
+                        </div>
+                        <div>
+                        <button onClick={handleClickIr}>Calcule seu IR</button>
                         </div>
                     </div>
                 </div>
             </div>
             {
                 <div className="bottom-alt">
+                    
                     {Bottom()}
                 </div>
             }

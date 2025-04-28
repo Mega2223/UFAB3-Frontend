@@ -14,11 +14,12 @@ const navigate = useNavigate();
 const setUserToken = useSetAtom(userTokenAtom);
 
 const handleCadastro = async () => {
-    axios.post("http://localhost:9001/auth/sign",{
+    debugger
+    const response = await axios.post("http://localhost:9001/auth/sign",{
         name: values.name,
-        lastName:"",
+        lastName:"Sobrenome",
         email: values.email,
-        passwordHash: values.password
+        password: values.password
     })
     .then((res) => localStorage.setItem("token",res.data.token))
     .catch((err) => console.error(err));

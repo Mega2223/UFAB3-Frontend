@@ -2,9 +2,13 @@ import { Button, Typography, Box, Alert, CircularProgress, } from "@mui/material
 import { ChangeEvent, useRef , useState } from "react";
 import AssignmentAddIcon from '@mui/icons-material/AssignmentAdd';
 import axios from "axios";
+import { useNavigate } from "react-router";
+
 
 export default function UploadButton() {
     const inputRef = useRef<HTMLInputElement>(null);
+    const navigate = useNavigate()
+
 
     const [loading, setLoading] = useState(false);
     
@@ -19,6 +23,8 @@ export default function UploadButton() {
           });
 
           setTimeout(() => {
+            alert("Arquivo processado com sucesso!")
+            navigate('/dashboard')
             setLoading(false);
 
           }, 3000);

@@ -18,7 +18,7 @@ import IrAsset from './paginas/IrAsset/index.tsx';
 const ProtectedRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
   const userToken = useAtomValue(userTokenAtom);
   const isLoggedIn = !!userToken;
-  return isLoggedIn || true /*TODO: REMOVE ISSO*/ ? children : <Navigate to="/Home" />;
+  return isLoggedIn || true /*TODO: REMOVE ISSO*/ ? children : <Navigate to="/" />;
 };
 
 createRoot(document.getElementById('root')!).render(

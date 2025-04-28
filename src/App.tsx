@@ -1,4 +1,5 @@
-import './App.css'
+import './App.css';
+import { useNavigate } from 'react-router-dom';
 
 const user = {
     // TODO o user state foi migrado eu acredito
@@ -9,20 +10,31 @@ const user = {
 // let state = "main";
 
 export function LoginButton(){
+    const navigate = useNavigate();
+    const handleLoginClick = () => {
+        navigate('/login')
+    }
     if(user.name == null){
-        return (<button id="login">Login</button>)
+        return (<button id="login" onClick={handleLoginClick}>Login</button>)
     } else {
         return (<button id="user">{user.name}</button>)
     }
 }
 
 export function Header() {
-    const login = LoginButton()
+    const navigate = useNavigate();
+
+    const login = LoginButton();
+    const handleHomeClick = () => {
+        navigate('/');
+      };
+
+
     return (
         <div id="header">
             <img src={"/UFAB3.png"} alt={"Logo"}/>
             <div id="buttons">
-                <button id="home">Home</button>
+                <button id="home" onClick={handleHomeClick}>Home</button>
                 {login}
             </div>
         </div>
