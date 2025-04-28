@@ -2,32 +2,45 @@ import { Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { Header } from '../../App';
 import { FaRegCopy } from 'react-icons/fa6';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { api } from '../../api';
 
-const irAsset = {
-  ticker: 'MXRF11',
-  type: 'FII',
-  avgPrice: 10.05,
-  group: '07  - Fundos',
-  code: '03 - Fundos de Investimento Imobiliário',
-  location: '105 - Brasil',
-  cnpj: '00.000.000/0001-00',
-  description: '20 cotas do FII de código MXRF11',
-  positions: [
-    {
-      year: 2024,
-      value: 2000.47,
-    },
-    {
-      year: 2025,
-      value: 3000.32,
-    },
-  ],
-  origin: 'Maxi Renda Fundo de Investimento Imobiliário',
-  earnings: 200.54,
+type IrAsset = {
+  avgPrice: number;
+  cnpj: string;
+  code: string;
+  description: string;
+  earnings: number;
+  group: string;
+  location: string;
+  origin: string;
+  positions: {
+    value: number;
+    year: number;
+  }[];
+  ticker: string;
+  type: string;
 };
 
 const IrAsset: React.FC = () => {
   const navigate = useNavigate();
+
+  const { ticker } = useParams<{ ticker: string }>();
+
+  const [irAsset, setIrAsset] = useState<IrAsset | null>(null);
+
+  useEffect(() => {
+    const exec = async () => {
+      if (!ticker) return;
+
+      const response = await api.get<IrAsset>(`/ir/${ticker}`);
+
+      setIrAsset(response.data);
+    };
+
+    exec();
+  }, [ticker]);
 
   const Info = ({
     title,
@@ -70,6 +83,23 @@ const IrAsset: React.FC = () => {
     );
   };
 
+  if (!irAsset) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 0,
+          padding: '32px',
+        }}
+      >
+        <Typography variant="h4" align="left" fontWeight="bold">
+          Carregando...
+        </Typography>
+      </Box>
+    );
+  }
+
   return (
     <Box
       sx={{
@@ -93,7 +123,7 @@ const IrAsset: React.FC = () => {
         </Typography>
         <Typography variant="body1" align="left">
           {irAsset.type} - PM em 31/12/2025: R$
-          {irAsset.avgPrice.toString().padEnd(2, '0').replace('.', ',')}
+          {irAsset.avgPrice.toFixed(2).replace('.', ',')}
         </Typography>
         <Typography variant="h5" align="left" fontWeight="bold">
           Bens e Direitos
@@ -122,16 +152,14 @@ const IrAsset: React.FC = () => {
           <Info
             title={`Situação em 31/12/${irAsset.positions[0].year} (R$)`}
             description={`R$ ${irAsset.positions[0].value
-              .toString()
-              .padEnd(2, '0')
+              .toFixed(2)
               .replace('.', ',')}`}
             showCopyButton
           />
           <Info
             title={`Situação em 31/12/${irAsset.positions[1].year} (R$)`}
             description={`R$ ${irAsset.positions[1].value
-              .toString()
-              .padEnd(2, '0')
+              .toFixed(2)
               .replace('.', ',')}`}
             showCopyButton
           />
@@ -164,10 +192,7 @@ const IrAsset: React.FC = () => {
 
         <Info
           title={`Valor`}
-          description={`R$ ${irAsset.earnings
-            .toString()
-            .padEnd(2, '0')
-            .replace('.', ',')}`}
+          description={`R$ ${irAsset.earnings.toFixed(2).replace('.', ',')}`}
           showCopyButton
         />
       </Box>
