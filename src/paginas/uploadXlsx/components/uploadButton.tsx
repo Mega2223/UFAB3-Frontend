@@ -1,21 +1,28 @@
-import { Button, Typography, Box } from "@mui/material";
-import { ChangeEvent, useRef } from "react";
+import { Button, Typography, Box, Alert, CircularProgress, } from "@mui/material";
+import { ChangeEvent, useRef , useState } from "react";
 import AssignmentAddIcon from '@mui/icons-material/AssignmentAdd';
 import axios from "axios";
 
 export default function UploadButton() {
     const inputRef = useRef<HTMLInputElement>(null);
+
+    const [loading, setLoading] = useState(false);
     
     const handleUpload = async (file: File) => {
-            const formData = new FormData();
-            formData.append("file", file);
-          
-            const response = await axios.post("http://localhost:9001/upload", formData, {
+          setLoading(true)
+          const formData = new FormData();
+          formData.append("file", file);
+          const response = await axios.post("http://localhost:9001/upload", formData, {
               headers: {
                 "Content-Type": "multipart/form-data",
-              },
-            });
-            console.log(response)
+              },  
+          });
+
+          setTimeout(() => {
+            setLoading(false);
+
+          }, 3000);
+          console.log(response)
           };
   
     const handleButtonClick = () => {
@@ -40,7 +47,7 @@ export default function UploadButton() {
         />
         <Box marginTop='10px' display='flex' alignItems='center' gap={2}>
             <Typography variant="h6" sx={{color: 'black'}}>Anexe aqui suas transações</Typography>
-            <Button onClick={handleButtonClick}>
+            <Button onClick={handleButtonClick} disabled={loading}>
               <AssignmentAddIcon/>
             </Button>
 
