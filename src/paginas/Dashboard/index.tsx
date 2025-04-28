@@ -1,9 +1,11 @@
-import {Header} from "../../App.tsx";
+import {Bottom, Header} from "../../App.tsx";
 import "../../App.css"
-import {VictoryPie, VictoryTheme} from "victory";
 import React from "react";
-import {Paper} from "@mui/material";
+import {Box, Paper, Typography} from "@mui/material";
 import { DataGrid , GridColDef} from '@mui/x-data-grid';
+
+import GraphicPizzaExemple from '../Home/components/graphics/GraphicPizzaExemple';
+import PortfolioTable from '../Home/components/graphics/PortifolioTable';
 
 
 import('./Dashboard.css');
@@ -87,21 +89,30 @@ const Dashboard: React.FC = () => {
                     <div>
                         <h2 className="title">POSIÇÃO NA CARTEIRA</h2>
                         <div className="part">
-                            <div className="chart">
-                                <VictoryPie
-                                    innerRadius={50}
-                                    data={[
-                                        //TODO já sabe né
-                                        {x: "A", y: 35},
-                                        {x: "B", y: 40},
-                                        {x: "C", y: 55},
-                                        {x: "D", y: 61},
-                                        {x: "E", y: 23},
-                                        {x: "F", y: 90},
-                                    ]}
-                                    theme={VictoryTheme.clean}
-                                />
-                            </div>
+                            {/*<div className="chart">*/}
+                            {/*    <VictoryPie*/}
+                            {/*        innerRadius={50}*/}
+                            {/*        data={[*/}
+                            {/*            //TODO já sabe né*/}
+                            {/*            {x: "A", y: 35},*/}
+                            {/*            {x: "B", y: 40},*/}
+                            {/*            {x: "C", y: 55},*/}
+                            {/*            {x: "D", y: 61},*/}
+                            {/*            {x: "E", y: 23},*/}
+                            {/*            {x: "F", y: 90},*/}
+                            {/*        ]}*/}
+                            {/*        theme={VictoryTheme.clean}*/}
+                            {/*    />*/}
+                            {/*</div>*/}
+                            <Box
+                                alignContent='center'
+                            >
+                                <Typography variant="h3" sx={{color: 'black'}} alignContent='center' textAlign='center'>
+                                    Visualize sua carteira
+                                </Typography>
+                                <GraphicPizzaExemple/>
+
+                            </Box>
                         </div>
                     </div>
                     <div>
@@ -113,12 +124,12 @@ const Dashboard: React.FC = () => {
                     <div>
                         <h2 className="title">POSIÇÃO DETALHADA</h2>
                         <div className="part">
-                            {/*{GenTable()}*/}
+                            {GenTable()}
                         </div>
                     </div>
                 </div>
             </div>
-            {/*{Bottom()}*/}
+            {Bottom()}
         </>
     );
 };
