@@ -1,7 +1,8 @@
-import { Box, Typography } from '@mui/material';
-import { useNavigate } from 'react-router';
-import { Header } from '../../App';
-import { FaRegCopy } from 'react-icons/fa6';
+import {Box, Typography} from '@mui/material';
+import {useNavigate} from 'react-router';
+import {Bottom, Header} from '../../App';
+import {FaRegCopy} from 'react-icons/fa6';
+import './IrAsset.css'
 
 const irAsset = {
   ticker: 'MXRF11',
@@ -70,23 +71,23 @@ const IrAsset: React.FC = () => {
     );
   };
 
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 0,
-      }}
-    >
-      {/* <Header />  TODO: Add header */}
-      <Box
+  return <>
+    {Header()}
+    <Box className = "ir-asset"
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
-          padding: '32px',
-          maxWidth: '1296px',
+          gap: 0,
         }}
+    >
+      <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            padding: '32px',
+            maxWidth: '1296px',
+          }}
       >
         <Typography variant="h4" align="left" fontWeight="bold">
           {irAsset.ticker}
@@ -99,41 +100,41 @@ const IrAsset: React.FC = () => {
           Bens e Direitos
         </Typography>
 
-        <Info title="Grupo" description={irAsset.group} />
-        <Info title="Código" description={irAsset.code} />
-        <Info title="Localização (País)" description={irAsset.location} />
-        <Info title="CNPJ do Fundo" description={irAsset.cnpj} showCopyButton />
+        <Info title="Grupo" description={irAsset.group}/>
+        <Info title="Código" description={irAsset.code}/>
+        <Info title="Localização (País)" description={irAsset.location}/>
+        <Info title="CNPJ do Fundo" description={irAsset.cnpj} showCopyButton/>
         <Info
-          title="Discriminação"
-          description={irAsset.description}
-          showCopyButton
+            title="Discriminação"
+            description={irAsset.description}
+            showCopyButton
         />
 
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: '32px' }}>
-          <Info title="Negociados em Bolsa?" description="Sim" />
+        <Box sx={{display: 'flex', flexDirection: 'row', gap: '32px'}}>
+          <Info title="Negociados em Bolsa?" description="Sim"/>
           <Info
-            title="Código de Negociação"
-            description={irAsset.ticker}
-            showCopyButton
+              title="Código de Negociação"
+              description={irAsset.ticker}
+              showCopyButton
           />
         </Box>
 
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: '32px' }}>
+        <Box sx={{display: 'flex', flexDirection: 'row', gap: '32px'}}>
           <Info
-            title={`Situação em 31/12/${irAsset.positions[0].year} (R$)`}
-            description={`R$ ${irAsset.positions[0].value
-              .toString()
-              .padEnd(2, '0')
-              .replace('.', ',')}`}
-            showCopyButton
+              title={`Situação em 31/12/${irAsset.positions[0].year} (R$)`}
+              description={`R$ ${irAsset.positions[0].value
+                  .toString()
+                  .padEnd(2, '0')
+                  .replace('.', ',')}`}
+              showCopyButton
           />
           <Info
-            title={`Situação em 31/12/${irAsset.positions[1].year} (R$)`}
-            description={`R$ ${irAsset.positions[1].value
-              .toString()
-              .padEnd(2, '0')
-              .replace('.', ',')}`}
-            showCopyButton
+              title={`Situação em 31/12/${irAsset.positions[1].year} (R$)`}
+              description={`R$ ${irAsset.positions[1].value
+                  .toString()
+                  .padEnd(2, '0')
+                  .replace('.', ',')}`}
+              showCopyButton
           />
         </Box>
 
@@ -141,38 +142,41 @@ const IrAsset: React.FC = () => {
           Rendimentos Isentos e Não Tributáveis
         </Typography>
 
-        <Info title="Tipo de Rendimento" description="99 - Outros" />
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: '32px' }}>
+        <Info title="Tipo de Rendimento" description="99 - Outros"/>
+        <Box sx={{display: 'flex', flexDirection: 'row', gap: '32px'}}>
           <Info
-            title="CPF/CNPJ da Fonte Pagadora"
-            description={irAsset.cnpj}
-            showCopyButton
+              title="CPF/CNPJ da Fonte Pagadora"
+              description={irAsset.cnpj}
+              showCopyButton
           />
           <Info
-            title="Nome da Fonte Pagadora"
-            description={irAsset.origin}
-            showCopyButton
+              title="Nome da Fonte Pagadora"
+              description={irAsset.origin}
+              showCopyButton
           />
         </Box>
 
         {/* TODO: Fix description */}
         <Info
-          title="Descrição"
-          description={irAsset.description}
-          showCopyButton
+            title="Descrição"
+            description={irAsset.description}
+            showCopyButton
         />
 
         <Info
-          title={`Valor`}
-          description={`R$ ${irAsset.earnings
-            .toString()
-            .padEnd(2, '0')
-            .replace('.', ',')}`}
-          showCopyButton
+            title={`Valor`}
+            description={`R$ ${irAsset.earnings
+                .toString()
+                .padEnd(2, '0')
+                .replace('.', ',')}`}
+            showCopyButton
         />
       </Box>
     </Box>
-  );
+    <div className="ir-asset-bottom">
+      {Bottom()}
+    </div>
+  </>;
 };
 
 export default IrAsset;

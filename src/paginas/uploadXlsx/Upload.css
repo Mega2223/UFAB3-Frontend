@@ -1,0 +1,20 @@
+@font-face {
+    font-family: Inter;
+    src: url("/public/fonts/Inter.ttf");
+}
+
+.upload{
+    color: black;
+    background-color: white;
+    position: absolute;
+    width: 100vw;
+    height: 170vh;
+    top: 23vh;
+    font-family: Inter, monospace;
+}
+
+.upload-bottom{
+    #bottom{
+        top:170vh
+    }
+}
