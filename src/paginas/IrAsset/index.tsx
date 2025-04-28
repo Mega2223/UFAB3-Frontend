@@ -43,6 +43,10 @@ const IrAsset: React.FC = () => {
     exec();
   }, [ticker]);
 
+  const renderHeader = () => {
+    return Header();
+  };
+
   const Info = ({
     title,
     description,
@@ -94,6 +98,7 @@ const IrAsset: React.FC = () => {
           padding: '32px',
         }}
       >
+        {renderHeader()}
         <Typography variant="h4" align="left" fontWeight="bold">
           Carregando...
         </Typography>
@@ -103,7 +108,7 @@ const IrAsset: React.FC = () => {
 
   return (
     <>
-      {Header()}
+      {renderHeader()}
       <Box
         className="ir-asset"
         sx={{
