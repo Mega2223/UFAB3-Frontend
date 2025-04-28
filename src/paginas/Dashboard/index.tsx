@@ -45,11 +45,14 @@ const stocks: Asset[] = makeUpAssets(5);
 const fields = [
     'ticker','name','pmed','pat','diff','var_hj','var_tot','pct_ac','na_cart'
 ]
+const fnames = [
+    'Ticker','Ativo','Preço Médio','Preço Atual','Diferença','Variação Hoje','Variação Total','% Em Ações','% Na Carteira'
+]
 
 function genGridComponents(){
     const col: GridColDef[] = []
     for (let i = 0; i < fields.length; i++) {
-        col[i] = {field: fields[i], headerName: fields[i], width: 70}
+        col[i] = {field: fields[i], headerName: fnames[i], width: 120}
     }
     return col;
 }
@@ -60,12 +63,12 @@ const paginationModel = { page: 0, pageSize: 5 };
 
 export function GenTable(){
     return (
-        <Paper sx={{ height: 400, width: '100%' }}>
+        <Paper sx={{ height: '60vh', width: '100%' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
                 initialState={{ pagination: { paginationModel } }}
-                pageSizeOptions={[5, 10]}
+                // pageSizeOptions={[5, 10]}
                 // checkboxSelection
                 sx={{ border: 0 }}
             />
@@ -86,7 +89,7 @@ const Dashboard: React.FC = () => {
                         <div className="part">
                             <div className="chart">
                                 <VictoryPie
-                                    innerRadius={70}
+                                    innerRadius={50}
                                     data={[
                                         //TODO já sabe né
                                         {x: "A", y: 35},
@@ -110,8 +113,7 @@ const Dashboard: React.FC = () => {
                     <div>
                         <h2 className="title">POSIÇÃO DETALHADA</h2>
                         <div className="part">
-                            <div className="chart">
-                            </div>
+                            {/*{GenTable()}*/}
                         </div>
                     </div>
                 </div>
