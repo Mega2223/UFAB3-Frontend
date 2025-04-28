@@ -11,13 +11,14 @@ import IrSummary from './paginas/IrSummary';
 import Home from './paginas/Home';
 import Login from './paginas/Login/Login.tsx';
 import Cadastro from './paginas/Cadastro/Cadastro.tsx';
+import Dashboard from './paginas/Dashboard/index.tsx'
 import UploadXlsx from './paginas/uploadXlsx';
 import IrAsset from './paginas/IrAsset/index.tsx';
 
 const ProtectedRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
   const userToken = useAtomValue(userTokenAtom);
   const isLoggedIn = !!userToken;
-  return isLoggedIn ? children : <Navigate to="/login" />;
+  return isLoggedIn ? children : <Navigate to="/Home" />;
 };
 
 createRoot(document.getElementById('root')!).render(
@@ -25,14 +26,15 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         {/* TODO: Add landing page */}
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<Cadastro />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route
           path="/*"
           element={
             <ProtectedRoute>
               <Routes>
-                <Route path="/" element={<Home />} />
                 <Route path="/ir" element={<IrSummary />} />
                 <Route path="/ir/:ticker" element={<IrAsset />} />
                 <Route path="/uploadXlsx" element={<UploadXlsx />} />
@@ -40,6 +42,7 @@ createRoot(document.getElementById('root')!).render(
             </ProtectedRoute>
           }
         />
+
       </Routes>
     </BrowserRouter>
   </StrictMode>
