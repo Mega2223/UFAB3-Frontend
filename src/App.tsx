@@ -20,7 +20,7 @@ export function Header() {
     const login = LoginButton()
     return (
         <div id="header">
-            <img src={"./UFAB3.png"} alt={"Logo"}/>
+            <img src={"/UFAB3.png"} alt={"Logo"}/>
             <div id="buttons">
                 <button id="home">Home</button>
                 {login}
@@ -32,7 +32,7 @@ export function Header() {
 export function Bottom(){
     return (
         <div id="bottom">
-            <img src={"./UFABC_LAZY.png"} id="socials" alt={"Logo UFAB3"}/>
+            <img src={"/UFABC_LAZY.png"} id="socials" alt={"Logo UFAB3"}/>
             <div id="buttons">
                 <button id="quem">Quem somos</button>
                 <button id="faq">FAQ</button>

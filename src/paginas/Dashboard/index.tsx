@@ -129,7 +129,11 @@ const Dashboard: React.FC = () => {
                     </div>
                 </div>
             </div>
-            {Bottom()}
+            {
+                <div className="bottom-alt">
+                    {Bottom()}
+                </div>
+            }
         </>
     );
 };

@@ -1,9 +1,10 @@
 import { Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { FaChevronRight } from 'react-icons/fa';
-import { Header } from '../../App';
+import { Header , Bottom} from '../../App';
 import { useEffect, useState } from 'react';
 import { api } from '../../api';
+import './Summary.css'
 
 type Asset = {
   ticker: string;
@@ -48,6 +49,7 @@ const IrSummary: React.FC = () => {
     const backgroundColor = rowIndex % 2 === 0 ? '#ffffff' : '#dedede';
 
     return (
+        <>
       <Box
         sx={{
           backgroundColor,
@@ -66,6 +68,8 @@ const IrSummary: React.FC = () => {
         </Typography>
         <FaChevronRight />
       </Box>
+
+        </>
     );
   };
 
@@ -89,8 +93,9 @@ const IrSummary: React.FC = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-      {/* <Header />  TODO: Add header */}
+      <>
+          {Header()}
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0 }} className="ir-summary" >
       <Box
         sx={{
           display: 'flex',
@@ -98,7 +103,7 @@ const IrSummary: React.FC = () => {
           gap: '16px',
           padding: '32px',
           maxWidth: '1296px',
-          margin: '0 auto',
+          margin: '0 auto'
         }}
       >
         <Typography variant="h4" align="center">
@@ -114,6 +119,8 @@ const IrSummary: React.FC = () => {
         <AssetTable assets={fiis} title="Fundos Imobiliários" />
       </Box>
     </Box>
+          {Bottom()}
+      </>
   );
 };
 

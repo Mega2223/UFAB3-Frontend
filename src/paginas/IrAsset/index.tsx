@@ -1,10 +1,11 @@
 import { Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
-import { Header } from '../../App';
+import { Header, Bottom } from '../../App';
 import { FaRegCopy } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../../api';
+import './IrAsset.css';
 
 type IrAsset = {
   avgPrice: number;
@@ -101,102 +102,119 @@ const IrAsset: React.FC = () => {
   }
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 0,
-      }}
-    >
-      {/* <Header />  TODO: Add header */}
+    <>
+      {Header()}
       <Box
+        className="ir-asset"
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
-          padding: '32px',
-          maxWidth: '1296px',
+          gap: 0,
         }}
       >
-        <Typography variant="h4" align="left" fontWeight="bold">
-          {irAsset.ticker}
-        </Typography>
-        <Typography variant="body1" align="left">
-          {irAsset.type} - PM em 31/12/2025: R$
-          {irAsset.avgPrice.toFixed(2).replace('.', ',')}
-        </Typography>
-        <Typography variant="h5" align="left" fontWeight="bold">
-          Bens e Direitos
-        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            padding: '32px',
+            maxWidth: '1296px',
+          }}
+        >
+          <Typography variant="h4" align="left" fontWeight="bold">
+            {irAsset.ticker}
+          </Typography>
+          <Typography variant="body1" align="left">
+            {irAsset.type} - PM em 31/12/2025: R$
+            {irAsset.avgPrice.toFixed(2).replace('.', ',')}
+          </Typography>
+          <Typography variant="h5" align="left" fontWeight="bold">
+            Bens e Direitos
+          </Typography>
 
-        <Info title="Grupo" description={irAsset.group} />
-        <Info title="Código" description={irAsset.code} />
-        <Info title="Localização (País)" description={irAsset.location} />
-        <Info title="CNPJ do Fundo" description={irAsset.cnpj} showCopyButton />
-        <Info
-          title="Discriminação"
-          description={irAsset.description}
-          showCopyButton
-        />
-
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: '32px' }}>
-          <Info title="Negociados em Bolsa?" description="Sim" />
+          <Info title="Grupo" description={irAsset.group} />
+          <Info title="Código" description={irAsset.code} />
+          <Info title="Localização (País)" description={irAsset.location} />
           <Info
-            title="Código de Negociação"
-            description={irAsset.ticker}
-            showCopyButton
-          />
-        </Box>
-
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: '32px' }}>
-          <Info
-            title={`Situação em 31/12/${irAsset.positions[0].year} (R$)`}
-            description={`R$ ${irAsset.positions[0].value
-              .toFixed(2)
-              .replace('.', ',')}`}
-            showCopyButton
-          />
-          <Info
-            title={`Situação em 31/12/${irAsset.positions[1].year} (R$)`}
-            description={`R$ ${irAsset.positions[1].value
-              .toFixed(2)
-              .replace('.', ',')}`}
-            showCopyButton
-          />
-        </Box>
-
-        <Typography variant="h5" align="left" fontWeight="bold">
-          Rendimentos Isentos e Não Tributáveis
-        </Typography>
-
-        <Info title="Tipo de Rendimento" description="99 - Outros" />
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: '32px' }}>
-          <Info
-            title="CPF/CNPJ da Fonte Pagadora"
+            title="CNPJ do Fundo"
             description={irAsset.cnpj}
             showCopyButton
           />
           <Info
-            title="Nome da Fonte Pagadora"
-            description={irAsset.origin}
+            title="Discriminação"
+            description={irAsset.description}
+            showCopyButton
+          />
+
+          <Box sx={{ display: 'flex', flexDirection: 'row', gap: '32px' }}>
+            <Info title="Negociados em Bolsa?" description="Sim" />
+            <Info
+              title="Código de Negociação"
+              description={irAsset.ticker}
+              showCopyButton
+            />
+          </Box>
+
+          <Box sx={{ display: 'flex', flexDirection: 'row', gap: '32px' }}>
+            <Info
+              title={`Situação em 31/12/${irAsset.positions[0].year} (R$)`}
+              description={`R$ ${irAsset.positions[0].value
+                .toFixed(2)
+                .replace('.', ',')}`}
+              showCopyButton
+            />
+            <Info
+              title={`Situação em 31/12/${irAsset.positions[1].year} (R$)`}
+              description={`R$ ${irAsset.positions[1].value
+                .toFixed(2)
+                .replace('.', ',')}`}
+              showCopyButton
+            />
+          </Box>
+
+          <Typography variant="h5" align="left" fontWeight="bold">
+            Rendimentos Isentos e Não Tributáveis
+          </Typography>
+
+          <Info title="Tipo de Rendimento" description="99 - Outros" />
+          <Box sx={{ display: 'flex', flexDirection: 'row', gap: '32px' }}>
+            <Info
+              title="CPF/CNPJ da Fonte Pagadora"
+              description={irAsset.cnpj}
+              showCopyButton
+            />
+            <Info
+              title="Nome da Fonte Pagadora"
+              description={irAsset.origin}
+              showCopyButton
+            />
+          </Box>
+
+          {/* TODO: Fix description */}
+          <Info
+            title="Descrição"
+            description={irAsset.description}
+            showCopyButton
+          />
+
+          <Info
+            title={`Valor`}
+            description={`R$ ${irAsset.earnings.toFixed(2).replace('.', ',')}`}
+            showCopyButton
+          />
+
+          <Info
+            title={`Valor`}
+            description={`R$ ${irAsset.earnings
+              .toString()
+              .padEnd(2, '0')
+              .replace('.', ',')}`}
             showCopyButton
           />
         </Box>
-
-        {/* TODO: Fix description */}
-        <Info
-          title="Descrição"
-          description={irAsset.description}
-          showCopyButton
-        />
-
-        <Info
-          title={`Valor`}
-          description={`R$ ${irAsset.earnings.toFixed(2).replace('.', ',')}`}
-          showCopyButton
-        />
       </Box>
-    </Box>
+      <div className="ir-asset-bottom">{Bottom()}</div>
+    </>
   );
 };
 

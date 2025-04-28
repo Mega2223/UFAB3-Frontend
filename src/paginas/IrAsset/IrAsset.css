@@ -1,0 +1,14 @@
+.ir-asset{
+    color: black;
+    background-color: white;
+    position: absolute;
+    width: 100vw;
+    height: 170vh;
+    top: 23vh;
+}
+
+.ir-asset-bottom{
+    #bottom{
+        top: 170vh
+    }
+}

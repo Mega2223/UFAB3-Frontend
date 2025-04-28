@@ -18,7 +18,7 @@ import IrAsset from './paginas/IrAsset/index.tsx';
 const ProtectedRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
   const userToken = useAtomValue(userTokenAtom);
   const isLoggedIn = !!userToken;
-  return isLoggedIn ? children : <Navigate to="/Home" />;
+  return isLoggedIn || true /*TODO: REMOVE ISSO*/ ? children : <Navigate to="/Home" />;
 };
 
 createRoot(document.getElementById('root')!).render(
@@ -27,6 +27,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         {/* TODO: Add landing page */}
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} /> {/* <--- Gambiarra */}
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<Cadastro />} />
         <Route path="/dashboard" element={<Dashboard />} />

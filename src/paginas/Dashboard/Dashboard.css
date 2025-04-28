@@ -6,7 +6,7 @@
 .tela-dashboard{
     position: absolute;
     top: 23vh;
-    width: 100vw; height: 200vh;
+    width: 100vw; height: 275vh;
     color: black; background-color: white;
     display: flex; align-content: center;
 
@@ -26,7 +26,7 @@
     }
     .part{
         height: 60vh;
-        background-color: #888888;
+        /*background-color: #888888;*/
     }
 
     tableCell{
@@ -40,7 +40,10 @@
     }
 }
 
-#bottom{
-    top: 200vh
+.bottom-alt{
+    /*Solução extremamente horrível mas tá aí*/
+    #bottom{
+        top: 275vh
+    }
 }
 
