@@ -190,7 +190,6 @@ const IrAsset: React.FC = () => {
             />
           </Box>
 
-          {/* TODO: Fix description */}
           <Info
             title="Descrição"
             description={irAsset.description}
@@ -200,15 +199,6 @@ const IrAsset: React.FC = () => {
           <Info
             title={`Valor`}
             description={`R$ ${irAsset.earnings.toFixed(2).replace('.', ',')}`}
-            showCopyButton
-          />
-
-          <Info
-            title={`Valor`}
-            description={`R$ ${irAsset.earnings
-              .toString()
-              .padEnd(2, '0')
-              .replace('.', ',')}`}
             showCopyButton
           />
         </Box>
