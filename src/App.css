@@ -52,7 +52,7 @@ html, body {
 }
 
 #header #buttons #login, #header #buttons #user {
-  background-color: #1a1a1a;
+  background-color: #fff;
   grid-column: 2;
 }
 #header #buttons #home{
