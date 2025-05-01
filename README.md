@@ -4,10 +4,10 @@ Projeto de ferramenta para investimentos para o nosso projeto de Laboratório de
 
 Desenvolvido por:
 
-Júlio César Borges de Oliveira Sampaio
-Rodrigo Mayer
-Lucas Soares Pessoa
-Thiago Lima
+Júlio César Borges de Oliveira Sampaio  
+Rodrigo Mayer  
+Lucas Soares Pessoa  
+Thiago Lima  
 
 ## Build
 
