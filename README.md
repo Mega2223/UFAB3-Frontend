@@ -9,7 +9,7 @@ Rodrigo Mayer
 Lucas Soares Pessoa
 Thiago Lima
 
-## Buil
+## Build
 
 Dá um `npm install` antes de rodar    
 pra rodar dá um `npm run dev`
