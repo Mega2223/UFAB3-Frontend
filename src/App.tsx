@@ -1,11 +1,9 @@
 import './App.css';
+import './main.tsx'
 import { useNavigate } from 'react-router-dom';
+import {useAtomValue} from "jotai/index";
+import {userTokenAtom} from "./atoms.ts";
 
-const user = {
-  // TODO o user state foi migrado eu acredito
-  // name: "Júlio"
-  name: null,
-};
 
 // let state = "main";
 
@@ -14,14 +12,17 @@ export function LoginButton() {
   const handleLoginClick = () => {
     navigate('/login');
   };
-  if (user.name == null) {
+  const userToken = useAtomValue(userTokenAtom);
+  const isLoggedIn = !!userToken;
+  if (! isLoggedIn) {
     return (
       <button id="login" onClick={handleLoginClick}>
         Login
       </button>
     );
   } else {
-    return <button id="user">{user.name}</button>;
+
+    return <button id="user">{"Bem vindo"}</button>;
   }
 }
 
