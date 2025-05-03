@@ -20,7 +20,7 @@ export default function Login() {
      passwordHash: values.password
     })
     .then((res) => localStorage.setItem("token",res.data.token))
-    .catch((err) => console.error(response));
+    .catch((err) => console.error(err));
     setUserToken('token'); // TODO: Handle auth
     navigate('/uploadXlsx');
   };
