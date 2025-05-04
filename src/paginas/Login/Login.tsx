@@ -3,11 +3,12 @@ import { Bottom } from '../../App.tsx';
 
 import('./Login.css');
 
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { userTokenAtom } from '../../atoms.ts';
 import { useSetAtom } from 'jotai';
 import { useState } from 'react';
 import axios from 'axios';
+import { Box } from '@mui/material';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -71,6 +72,9 @@ export default function Login() {
               <button>Login</button>
             </div>
           </form>
+          <Box sx={{ marginTop: 3, textAlign: 'center' }}>
+            <Link to="/create-account">Criar Conta</Link>
+          </Box>
         </div>
       </div>
       {Bottom()}
