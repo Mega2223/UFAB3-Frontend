@@ -7,6 +7,9 @@ import { useParams } from 'react-router-dom';
 import { api } from '../../api';
 import './IrAsset.css';
 
+import { useAtomValue } from 'jotai';
+import { userTokenAtom } from '../../atoms';
+
 type IrAsset = {
   avgPrice: number;
   cnpj: string;
@@ -31,11 +34,17 @@ const IrAsset: React.FC = () => {
 
   const [irAsset, setIrAsset] = useState<IrAsset | null>(null);
 
+  const userToken = useAtomValue(userTokenAtom);
+
   useEffect(() => {
     const exec = async () => {
       if (!ticker) return;
 
-      const response = await api.get<IrAsset>(`/ir/${ticker}`);
+      const response = await api.get<IrAsset>(`/ir/${ticker}`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
 
       setIrAsset(response.data);
     };

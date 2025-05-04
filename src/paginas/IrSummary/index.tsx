@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react';
 import { api } from '../../api';
 import './Summary.css';
 
+import { useAtomValue } from 'jotai';
+import { userTokenAtom } from '../../atoms';
+
 type Asset = {
   ticker: string;
   name: string;
@@ -17,11 +20,17 @@ const IrSummary: React.FC = () => {
   const [fiis, setFiis] = useState<Asset[]>([]);
   const [stocks, setStocks] = useState<Asset[]>([]);
 
+  const userToken = useAtomValue(userTokenAtom);
+
   useEffect(() => {
     const exec = async () => {
       const response = await api.get<{
         assets: { fiis: Asset[]; stocks: Asset[] };
-      }>('/ir');
+      }>('/ir', {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
 
       const { fiis, stocks } = response.data.assets;
       setFiis(fiis);
