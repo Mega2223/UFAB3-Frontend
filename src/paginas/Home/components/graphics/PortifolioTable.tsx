@@ -1,5 +1,14 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+} from '@mui/material';
 
 interface Asset {
   ticker: string;
@@ -15,21 +24,6 @@ interface AssetData extends Asset {
   percentageInStocks: number; // % em ações
   percentageInPortfolio: number; // % na carteira
 }
-
-const stocks: Asset[] = [
-  { ticker: 'PETR4', name: 'Petrobras' },
-  { ticker: 'VALE3', name: 'Vale S.A.' },
-  { ticker: 'ITUB4', name: 'Itaú Unibanco' },
-  { ticker: 'B3SA3', name: 'B3 S.A.' },
-  { ticker: 'ABEV3', name: 'Ambev S.A.' },
-];
-
-const fiis: Asset[] = [
-  { ticker: 'HGLG11', name: 'Ceará Logística' },
-  { ticker: 'KNRI11', name: 'Kinea Renda Imobiliária' },
-  { ticker: 'MXRF11', name: 'Maxi Renda' },
-  { ticker: 'VISC11', name: 'Vinci Shopping Centers' },
-];
 
 const assets: AssetData[] = [
   {
@@ -153,23 +147,36 @@ const PortfolioTable: React.FC = () => {
         <TableBody>
           {assets.map((asset) => (
             <TableRow key={asset.ticker}>
-              <TableCell>{asset.name} ({asset.ticker})</TableCell>
+              <TableCell>
+                {asset.name} ({asset.ticker})
+              </TableCell>
               <TableCell align="right">{asset.avgPrice.toFixed(2)}</TableCell>
-              <TableCell align="right">{asset.currentPrice.toFixed(2)}</TableCell>
               <TableCell align="right">
-                <Typography sx={{ color: asset.currentPrice - asset.avgPrice < 0 ? 'red' : 'green' }}>
+                {asset.currentPrice.toFixed(2)}
+              </TableCell>
+              <TableCell align="right">
+                <Typography
+                  sx={{
+                    color:
+                      asset.currentPrice - asset.avgPrice < 0 ? 'red' : 'green',
+                  }}
+                >
                   {(asset.currentPrice - asset.avgPrice).toFixed(2)}
                 </Typography>
               </TableCell>
               <TableCell align="right">{asset.quantity}</TableCell>
               <TableCell align="right">{asset.patrimony.toFixed(2)}</TableCell>
               <TableCell align="right">
-                <Typography sx={{ color: asset.variation < 0 ? 'red' : 'green' }}>
+                <Typography
+                  sx={{ color: asset.variation < 0 ? 'red' : 'green' }}
+                >
                   {asset.variation.toFixed(2)}%
                 </Typography>
               </TableCell>
               <TableCell align="right">{asset.percentageInStocks}%</TableCell>
-              <TableCell align="right">{asset.percentageInPortfolio}%</TableCell>
+              <TableCell align="right">
+                {asset.percentageInPortfolio}%
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

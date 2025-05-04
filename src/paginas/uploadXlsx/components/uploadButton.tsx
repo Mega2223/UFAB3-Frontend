@@ -44,6 +44,12 @@ export default function UploadButton() {
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
+
+    if (!file) {
+      alert('Nenhum arquivo selecionado');
+      return;
+    }
+
     handleUpload(file);
     if (file) {
       console.log('Arquivo selecionado:', file.name);

@@ -1,5 +1,4 @@
 import { Box, Typography } from '@mui/material';
-import { useNavigate } from 'react-router';
 import { Header, Bottom } from '../../App';
 import { FaRegCopy } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
@@ -28,8 +27,6 @@ type IrAsset = {
 };
 
 const IrAsset: React.FC = () => {
-  const navigate = useNavigate();
-
   const { ticker } = useParams<{ ticker: string }>();
 
   const [irAsset, setIrAsset] = useState<IrAsset | null>(null);
@@ -50,7 +47,7 @@ const IrAsset: React.FC = () => {
     };
 
     exec();
-  }, [ticker]);
+  }, [ticker, userToken]);
 
   const renderHeader = () => {
     return Header();
