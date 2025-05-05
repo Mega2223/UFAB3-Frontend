@@ -5,7 +5,6 @@ import { Box, Paper, Typography } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useNavigate } from 'react-router';
 import GraphicPizzaExemple from '../Home/components/graphics/GraphicPizzaExemple';
-import PortfolioTable from '../Home/components/graphics/PortifolioTable';
 import { api } from '../../api/index.ts';
 
 import { useAtomValue } from 'jotai';
