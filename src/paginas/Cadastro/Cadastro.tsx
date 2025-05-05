@@ -27,7 +27,7 @@ export default function Cadastro() {
     const lastName = values.name.split(' ').slice(1).join(' ');
 
     try {
-      await axios.post('http://localhost:9001/auth/sign', {
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/auth/sign`, {
         name: firstName,
         lastName: lastName,
         email: values.email,

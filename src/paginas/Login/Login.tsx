@@ -23,10 +23,13 @@ export default function Login() {
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const response = await axios.post('http://localhost:9001/auth/login', {
-      email: values.email,
-      password: values.password,
-    });
+    const response = await axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/auth/login`,
+      {
+        email: values.email,
+        password: values.password,
+      }
+    );
 
     const { token } = response.data;
 

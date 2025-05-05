@@ -20,7 +20,7 @@ export default function UploadButton() {
     const formData = new FormData();
     formData.append('file', file);
     const response = await axios.post(
-      'http://localhost:9001/upload',
+      `${process.env.REACT_APP_SERVER_URL}/upload`,
       formData,
       {
         headers: {
