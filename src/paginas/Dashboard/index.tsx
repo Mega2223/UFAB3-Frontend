@@ -1,10 +1,15 @@
 import { Bottom, Header } from '../../App.tsx';
 import '../../App.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Paper, Typography } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useNavigate } from 'react-router';
 import GraphicPizzaExemple from '../Home/components/graphics/GraphicPizzaExemple';
+import PortfolioTable from '../Home/components/graphics/PortifolioTable';
+import { api } from '../../api/index.ts';
+
+import { useAtomValue } from 'jotai';
+import { userTokenAtom } from '../../atoms';
 
 import('./Dashboard.css');
 
@@ -93,8 +98,44 @@ export function GenTable() {
   );
 }
 
+interface DashboardResponse {
+  earnings: {
+    _sum: {
+      totalValue: string;
+    };
+    assetId: number;
+    asset: {
+      category: string;
+      id: number;
+      name: string;
+      ticker: string;
+    };
+  }[];
+}
+
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
+
+  const userToken = useAtomValue(userTokenAtom);
+
+  const [earnings, setEarnings] = useState<
+    DashboardResponse['earnings'] | null
+  >(null);
+
+  useEffect(() => {
+    const exec = async () => {
+      const response = await api.get<DashboardResponse>('/dashboard', {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+
+      const { earnings } = response.data;
+      setEarnings(earnings);
+    };
+
+    exec();
+  }, [userToken]);
 
   const handleClickIr = () => {
     navigate('/ir');
@@ -144,9 +185,42 @@ const Dashboard: React.FC = () => {
           <div>
             <h2 className="title">POSIÇÃO DETALHADA</h2>
             <div className="part">{GenTable()}</div>
-            <div>
-              <button onClick={handleClickIr}>Calcule seu IR</button>
-            </div>
+            {earnings && (
+              <Box
+                sx={{
+                  padding: '8px',
+                  marginBottom: '16px',
+                }}
+              >
+                <h2 className="title">PROVENTOS POR ATIVO</h2>
+                <p>Valor total recebido de cada ativo</p>
+                <div className="table">
+                  {earnings.map((earning) => (
+                    <div
+                      key={earning.assetId}
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        border: '1px solid #ccc',
+                        padding: '8px',
+                      }}
+                    >
+                      <p style={{ flex: 1 }}>{earning.asset.ticker}</p>
+                      <p>
+                        R${' '}
+                        {Number(earning._sum.totalValue)
+                          .toFixed(2)
+                          .replace('.', ',')}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </Box>
+            )}
+          </div>
+          <div>
+            <button onClick={handleClickIr}>Calcule seu IR</button>
           </div>
         </div>
       </div>

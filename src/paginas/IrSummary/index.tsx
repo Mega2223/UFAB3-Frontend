@@ -38,7 +38,7 @@ const IrSummary: React.FC = () => {
     };
 
     exec();
-  }, []);
+  }, [userToken]);
 
   const TableHeader = ({ title }: { title: string }) => (
     <Box sx={{ backgroundColor: '#006D35', padding: '8px' }}>
