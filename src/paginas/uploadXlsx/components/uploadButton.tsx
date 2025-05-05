@@ -20,7 +20,7 @@ export default function UploadButton() {
     const formData = new FormData();
     formData.append('file', file);
     const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/upload`,
+      `${import.meta.env.VITE_SERVER_URL}/upload`,
       formData,
       {
         headers: {
