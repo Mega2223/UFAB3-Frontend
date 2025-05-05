@@ -146,6 +146,47 @@ const Dashboard: React.FC = () => {
       <div className="tela-dashboard">
         <div className="dashboard-inside">
           <h1>DASHBOARD</h1>
+
+          <div style={{ marginBottom: '64px' }}>
+            <button onClick={handleClickIr} style={{ fontSize: '2rem' }}>
+              Preenchimento da declaração de Imposto de Renda de Pessoa Física
+            </button>
+          </div>
+
+          {earnings && (
+            <Box
+              sx={{
+                padding: '8px',
+                marginBottom: '16px',
+              }}
+            >
+              <h2 className="title">PROVENTOS POR ATIVO</h2>
+              <p>Valor total recebido de cada ativo</p>
+              <div className="table">
+                {earnings.map((earning) => (
+                  <div
+                    key={earning.assetId}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      border: '1px solid #ccc',
+                      padding: '8px',
+                    }}
+                  >
+                    <p style={{ flex: 1 }}>{earning.asset.ticker}</p>
+                    <p>
+                      R${' '}
+                      {Number(earning._sum.totalValue)
+                        .toFixed(2)
+                        .replace('.', ',')}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </Box>
+          )}
+
           <div>
             <h2 className="title">POSIÇÃO NA CARTEIRA</h2>
             <div className="part">
@@ -180,46 +221,6 @@ const Dashboard: React.FC = () => {
           <div>
             <h2 className="title">POSIÇÃO POR ATIVO</h2>
             <div className="part">{GenTable()}</div>
-          </div>
-          <div>
-            <h2 className="title">POSIÇÃO DETALHADA</h2>
-            <div className="part">{GenTable()}</div>
-            {earnings && (
-              <Box
-                sx={{
-                  padding: '8px',
-                  marginBottom: '16px',
-                }}
-              >
-                <h2 className="title">PROVENTOS POR ATIVO</h2>
-                <p>Valor total recebido de cada ativo</p>
-                <div className="table">
-                  {earnings.map((earning) => (
-                    <div
-                      key={earning.assetId}
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        border: '1px solid #ccc',
-                        padding: '8px',
-                      }}
-                    >
-                      <p style={{ flex: 1 }}>{earning.asset.ticker}</p>
-                      <p>
-                        R${' '}
-                        {Number(earning._sum.totalValue)
-                          .toFixed(2)
-                          .replace('.', ',')}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </Box>
-            )}
-          </div>
-          <div>
-            <button onClick={handleClickIr}>Calcule seu IR</button>
           </div>
         </div>
       </div>
